@@ -1,6 +1,6 @@
 <?php
 
-namespace todoparrot\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
