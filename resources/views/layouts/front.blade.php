@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
 </head>
 <body>
-    <div class="navbar inverse">
+    <div class="navbar navbar-inverse">
         <a class="navbar-brand" href="#">Forum</a>
         <ul class="nav navbar-nav">
             <li class="active">
@@ -25,7 +25,9 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
