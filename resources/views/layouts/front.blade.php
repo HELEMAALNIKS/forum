@@ -6,46 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Forum</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
 </head>
 <body>
 @include('layouts.partials.navbar')
 
 @yield('banner')
 <div class="container">
-    <div class="row justify-content-between">
-{{--        <div class="row">--}}
-            <div class="col-md-3"><h4>Categorie</h4></div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-4"><h4 class="main-content-heading">@yield('heading')</h4></div>
-                </div>
-                <div class="col-md-offset 6col-md-2">
-                    <a class="btn btn-primary" href="{{route('thread.create')}}">Creeër thread</a>
-                </div>
-{{--            </div>--}}
-        </div>
-    </div>
     <div class="row">
-        <div class="col-md-3">
-            <div class="list-group">
-                <a href="{{route('thread.index')}}"
-                   class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    Cras justo odio
-                    <span class="badge badge-primary badge-pill">10</span>
-                </a>
-                <a href="{{route('thread.index')}}"
-                   class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    Morbi leo risus
-                    <span class="badge badge-primary badge-pill">5</span>
-                </a>
-                <a href="{{route('thread.index')}}"
-                   class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    Morbi leo risus
-                    <span class="badge badge-primary badge-pill">1</span>
-                </a>
-            </div>
-        </div>
+        @section('category')
+            @include('layouts.partials.categories')
+        @show
         <div class="col-md-9">
+            <div class="row content-heading"><h4>@yield('heading')</h4></div>
             <div class="content-wrap well">
                 @yield('content')
             </div>

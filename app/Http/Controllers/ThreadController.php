@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
+
+    function __construct()
+    {
+        return $this->middleware('auth')->except('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -72,7 +78,7 @@ class ThreadController extends Controller
      */
     public function edit(Thread $thread)
     {
-        //
+        return view('thread.edit',compact('thread'));
     }
 
     /**
@@ -82,9 +88,18 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Thread $thread)
     {
-        //
+        $this->validate($request,[
+            'subject'=>'required|min:10',
+            'type'=>'required',
+            'thread'=>'required|min:20',
+        ]);
+
+        //update
+        $thread->update($request->all());
+        return redirect()->route('thread.show',$thread->id)->withMessage('Thread bijgewerkt!');
     }
 
     /**
@@ -95,6 +110,8 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
-        //
+        $thread->delete();
+
+        return redirect()->route('thread.index')->withMessage('Thread verwijderd');
     }
 }
