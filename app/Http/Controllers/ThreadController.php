@@ -36,7 +36,21 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+
+        $this->validate($request,[
+            'subject'=>'required|min:10',
+            'type'=>'required',
+            'thread'=>'required|min:20',
+        ]);
+
+        //store
+
+        Thread::create($request->all());
+
+        //redirect
+
+        return back()->withMessage('Thread aangemaakt');
     }
 
     /**
@@ -47,7 +61,7 @@ class ThreadController extends Controller
      */
     public function show(Thread $thread)
     {
-        //
+        return view('thread.single', compact('thread'));
     }
 
     /**
