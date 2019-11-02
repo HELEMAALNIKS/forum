@@ -6,5 +6,6 @@
 
 @section('content')
 
-    @include('threads.partials.thread-list')
+    @include('thread.partials.thread-list')
+
 @endsection
