@@ -121,4 +121,6 @@ class ThreadController extends Controller
 
         return redirect()->route('thread.index')->withMessage('Thread verwijderd');
     }
+
+
 }

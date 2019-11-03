@@ -26,3 +26,6 @@ Route::resource('/thread','ThreadController');
 Route::resource('comment','CommentController',['only'=>['update','destroy']]);
 
 Route::post('comment/create/{thread}','CommentController@addThreadComment')->name('threadcomment.store');
+
+Route::get('/user/profile/{user}','UserProfileController@index')->name('user_profile');
+

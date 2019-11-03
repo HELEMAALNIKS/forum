@@ -23,7 +23,7 @@
 
             @endforelse
 
-        <h3>Comments</h3>
+        <h3>Reacties</h3>
 
         @forelse($comments as $comment)
             <h5>{{$user->name}} reageerde op {{$comment->commentable->subject}} {{$comment->created_at->diffForHumans()}}</h5>
