@@ -52,7 +52,7 @@ class ThreadController extends Controller
 
         //store
 
-        Thread::create($request->all());
+        auth()->user()->threads()->create($request->all());
 
         //redirect
 
@@ -91,6 +91,10 @@ class ThreadController extends Controller
 
     public function update(Request $request, Thread $thread)
     {
+        if(auth()->user()->id !==$thread->user_id){
+            return back()->withError("Geen toegang");
+        }
+
         $this->validate($request,[
             'subject'=>'required|min:10',
             'type'=>'required',
@@ -110,6 +114,9 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
+        if(auth()->user()->id !==$thread->user_id){
+            return back()->withError("Geen toegang");
+        }
         $thread->delete();
 
         return redirect()->route('thread.index')->withMessage('Thread verwijderd');

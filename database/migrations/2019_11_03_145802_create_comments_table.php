@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdToThreads extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class AddUserIdToThreads extends Migration
      */
     public function up()
     {
-        Schema::table('threads', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('user_id');
+            $table->string('body');
+            $table->integer('commentable_id');
+            $table->string('commentable_type');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class AddUserIdToThreads extends Migration
      */
     public function down()
     {
-        Schema::table('threads', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('comments');
     }
 }

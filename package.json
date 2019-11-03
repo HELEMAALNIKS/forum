@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "bootstrap4-toggle": "^3.6.1",
         "bootswatch": "^4.3.1"
     }
 }
