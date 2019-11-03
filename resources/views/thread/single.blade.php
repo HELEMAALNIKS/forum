@@ -9,7 +9,6 @@
         {{$thread->thread}}
     </div>
 
-    @if(auth()->user()->id == $thread->user_id)
     <div class="actions">
 
         <a href="{{route('thread.edit',$thread->id)}}" class="btn btn-info btn-xs">Bewerken</a>
@@ -19,18 +18,6 @@
             {{method_field('DELETE')}}
             <input class="btn btn-xs btn-danger" type="submit" value="Verwijderen">
         </form>
-
-    </div>
-    @endif
-
-
-    <div class="comment">
-        @foreach($thread->comments as $comment)
-
-            <h4>{{$comment->body}}</h4>
-            <lead>{{$comment->user->name}}</lead>
-
-        @endforeach
 
     </div>
 
