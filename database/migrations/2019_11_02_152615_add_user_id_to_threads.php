@@ -14,7 +14,12 @@ class AddUserIdToThreads extends Migration
     public function up()
     {
         Schema::table('threads', function (Blueprint $table) {
-            //
+            $table->integer('user_id');
+            $table->string('body');
+            $table->integer('commentable_id');
+            $table->string('commentable_type');
+            $table->timestamps();
+
         });
     }
 
@@ -26,7 +31,7 @@ class AddUserIdToThreads extends Migration
     public function down()
     {
         Schema::table('threads', function (Blueprint $table) {
-            //
+            $table->dropColumn('user_id');
         });
     }
 }

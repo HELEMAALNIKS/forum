@@ -52,7 +52,7 @@ class ThreadController extends Controller
 
         //store
 
-        Thread::create($request->all());
+        auth()->user()->threads()->create($request->all());
 
         //redirect
 
@@ -97,6 +97,11 @@ class ThreadController extends Controller
             'thread'=>'required|min:20',
         ]);
 
+        if(auth()->user()->id == $thread->user_id) {
+            return back()->withError("Je hebt hier geen toestemming voor");
+        }
+
+
         //update
         $thread->update($request->all());
         return redirect()->route('thread.show',$thread->id)->withMessage('Thread bijgewerkt!');
@@ -113,5 +118,9 @@ class ThreadController extends Controller
         $thread->delete();
 
         return redirect()->route('thread.index')->withMessage('Thread verwijderd');
+
+        if(auth()->user()->id == $thread->user_id) {
+            return back()->withError("Je hebt hier geen toestemming voor");
+        }
     }
 }
