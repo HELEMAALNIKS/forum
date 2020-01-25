@@ -92,7 +92,7 @@ class ThreadController extends Controller
     public function update(Request $request, Thread $thread)
     {
         //authoriseren
-        if(auth()->user()->id !==$thread->user_id){
+        if(auth()->user()->id !==$thread->user_id and auth()->user()->type !=='admin'){
             return back()->withError("Geen toegang");
         }
         //validatie met verplichte velden en een minimum aantal karakters
@@ -116,8 +116,8 @@ class ThreadController extends Controller
     public function destroy(Thread $thread)
     {
         //authoriseren
-        if(auth()->user()->id !==$thread->user_id){
-            return back()->withError("Geen toegang");
+        if(auth()->user()->id !==$thread->user_id and auth()->user()->type !=='admin') {
+                return back()->withError("Geen toegang");
         }
         $thread->delete();
 

@@ -29,5 +29,21 @@ Route::resource('comment','CommentController',['only'=>['update','destroy']]);
 
 Route::post('comment/create/{thread}','CommentController@addThreadComment')->name('threadcomment.store');
 
-Route::get('/user/profile/{user}','UserProfileController@index')->name('user_profile');
+//Route::get('/user/profile/{user}','UserProfileController@index')->name('user_profile');
+
+Route::get('/admin', 'AdminController@admin')
+    ->middleware('is_admin')
+    ->name('admin');
+
+//gebruiker bewerken
+Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'UserController@edit']);
+
+Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'UserController@update']);
+
+
+
+//Auth::routes();
+//Route::get('/home', 'HomeController@index')
+//    ->name('home');
+
 

@@ -10,7 +10,7 @@
     </div>
     <br>
 
-    @if(auth()->user()->id==$thread->user_id)
+    @if(auth()->user()->id==$thread->user_id or auth()->user()->type=='admin')
 {{--        @if()--}}
 {{--            @endif--}}
 
@@ -34,11 +34,8 @@
             <h4>{{$comment->body}}</h4>
             <lead>{{$comment->user->name}}</lead>
             <div class="actions">
-                @if(auth()->user()->id==$comment->user_id)
+                @if(auth()->user()->id==$comment->user_id or auth()->user()->type=='admin')
 {{--                <a href="{{route('comment.edit',$comment->id)}}" class="btn btn-info btn-xs">Bewerken</a>--}}
-
-
-
                 <form action="{{route('comment.destroy',$comment->id)}}" method="POST" class="inline-it">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}

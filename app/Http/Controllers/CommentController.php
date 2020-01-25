@@ -48,7 +48,7 @@ class CommentController extends Controller
     {
         //comment verwijderen
         //als niet geauthoriseerd, dan error
-        if($comment->user_id !== auth()->user()->id)
+        if($comment->user_id !== auth()->user()->id and auth()->user()->type !=='admin')
             abort('401');
         //delete functie uitvoeren
         $comment->delete();
