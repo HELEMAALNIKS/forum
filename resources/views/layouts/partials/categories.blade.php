@@ -9,6 +9,25 @@
            class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
             Threads
         </a>
+        @guest
+
+        @else
+                <a href="http://localhost:8080/forum/public/users/1"
+                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                Gegevens bewerken
+                </a>
+            @if(auth()->user()->type=='admin')
+                <a href="{{route('admin')}}"
+                   class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                    Admin paneel
+                </a>
+            @endif
+        @endguest
+
+
+
+
+
 {{--        <a href="{{route('user.profile.index')}}"--}}
 {{--           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">--}}
 {{--            User--}}
