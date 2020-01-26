@@ -12,7 +12,6 @@
 @section('content')
 
     <head>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
         <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -34,7 +33,9 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <input data-id="{{$user->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Admin" data-off="Normaal" {{ $user->status ? 'checked' : '' }}>
+                        <input data-id="{{$user->id}}" class="toggle-class" type="checkbox" data-onstyle="success"
+                               data-offstyle="danger" data-toggle="toggle" data-on="Admin" data-off="Normaal"
+                            {{ $user->type=="admin" ? 'checked' : '1' }}>
                     </td>
                 </tr>
             @endforeach
@@ -52,7 +53,7 @@
                     type: "GET",
                     dataType: "json",
                     url: '/changeStatus',
-                    data: {'status': status, 'user_id': user_id},
+                    data: {'type': admin, 'id': id},
                     success: function(data){
                         console.log(data.success)
                     }

@@ -40,7 +40,7 @@ Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'UserController@edi
 
 Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'UserController@update']);
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/adminpanel', 'AdminController@index');
 Route::get('/changeStatus', 'AdminController@changeStatus');
 
 //Auth::routes();

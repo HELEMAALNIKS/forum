@@ -16,12 +16,12 @@
                 class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                 Gegevens bewerken
                 </a>
-{{--            @if(auth()->user()->type=='admin')--}}
-{{--                <a href="{{route('admin')}}"--}}
-{{--                   class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">--}}
-{{--                    Admin paneel--}}
-{{--                </a>--}}
-{{--            @endif--}}
+            @if(auth()->user()->type=='admin')
+                <a href="http://localhost:8080/forum/public/adminpanel"
+                   class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                    Admin paneel
+                </a>
+            @endif
         @endguest
 
 

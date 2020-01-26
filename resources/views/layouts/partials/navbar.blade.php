@@ -72,15 +72,6 @@
                         </div>
                     </li>
                 @endguest
-                <li>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </li>
-                <li>
-                    <a class="nav-link" href="">Darkmode</a>
-                </li>
                 </li>
             </ul>
         </div>

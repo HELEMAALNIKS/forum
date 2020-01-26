@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,16 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        return view('thread.create');
+
+        $total_comments = Comment::where('user_id','=', auth()->user()->id)->count();
+
+        if($total_comments < 3){
+            return back()->withError("Geen toegang");
+        }
+        else {
+            return view('thread.create');
+        }
+
     }
 
     /**
