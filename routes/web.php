@@ -25,6 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/thread','ThreadController');
 
+Route::resource('/search','SearchController');
+
 Route::resource('comment','CommentController',['only'=>['update','destroy']]);
 
 Route::post('comment/create/{thread}','CommentController@addThreadComment')->name('threadcomment.store');
@@ -38,7 +40,8 @@ Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'UserController@edi
 
 Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'UserController@update']);
 
-
+Route::get('/admin', 'AdminController@index');
+Route::get('/changeStatus', 'AdminController@changeStatus');
 
 //Auth::routes();
 //Route::get('/home', 'HomeController@index')
