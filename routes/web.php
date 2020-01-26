@@ -25,8 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/thread','ThreadController');
 
-Route::resource('/search','SearchController');
-
 Route::resource('comment','CommentController',['only'=>['update','destroy']]);
 
 Route::post('comment/create/{thread}','CommentController@addThreadComment')->name('threadcomment.store');
@@ -47,4 +45,4 @@ Route::get('/changeStatus', 'AdminController@changeStatus');
 //Route::get('/home', 'HomeController@index')
 //    ->name('home');
 
-
+Route::get('/search', 'ThreadController@search');

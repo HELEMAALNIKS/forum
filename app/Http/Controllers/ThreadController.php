@@ -136,6 +136,10 @@ class ThreadController extends Controller
     /**
      * Search
      */
-
+    public function search(Request $request){
+        $search = $request->get('search');
+        $posts = Thread::table('threads')->where('name', 'like', '%' .$search. '%')->paginate(5);
+        return view('thread.index', ['posts' => $posts]);
+    }
 
 }

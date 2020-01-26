@@ -27,16 +27,16 @@ class AdminController extends Controller
     /**
      * Responds with a welcome message with instructions
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
-
     public function changeStatus(Request $request)
     {
         $user = User::find($request->user_id);
-        $user->status = $request->status;
+        $user->type = $request->type;
         $user->save();
 
         return response()->json(['success'=>'Status change successfully.']);
     }
+
 
 }
